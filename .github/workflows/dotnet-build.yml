@@ -1,0 +1,17 @@
+name: Acionado no push e de hora em hora
+
+on:
+    push:
+    schedule:
+        - cron: '0 * * * *' # vai rodar de hora em hora a partir da hora 0
+
+jobs:
+    Build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 'Checkout GitHub Actions'
+              uses: actions/checkout@master
+
+            - name: 'Script personalizado'
+              run: echo 'Rodando job, com status ${{ job.status }}.'
